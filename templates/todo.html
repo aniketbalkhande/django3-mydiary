@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+   <title>Django: Todo App</title>
+</head>
+<body>
+   
+   <div class="container">
+      <div class="head">
+         <h1> <i class="fas fa-stream"></i> MyDiary</h1>
+      </div>
+      <div class="addtodo">
+         <!-- just for security purpose -->
+         <form action="/addTodo/" method="POST">{% csrf_token %}  
+            <input type="text" id="input_item" name="content" placeholder="Add new work to do....">
+            <input type="submit" name="" id="add" value="Add">
+         </form>
+      </div>
+      
+      
+      <div class="content">
+         <ol>
+            {% for todo_item in all_items %}
+               <li>
+                  <input id="oregano"  type="checkbox" class="selection_checkbox" />
+                    <span id="list-text"> {{ todo_item.content }}</span>
+                     <form action="/deleteTodo/{{todo_item.id}}/"        method="POST">{% csrf_token %}  
+                        <input type="submit" value="X">
+                     </form>
+               </li>
+            {% endfor %}
+         </ol>
+        
+      </div>
+   </div>
+
+   <script src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
