@@ -2,9 +2,8 @@
 # django/todo_website/todo/views.py
 
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render   
+from django.shortcuts import render
 from .models import TodoItem
-from django.http import HttpResponseRedirect
 
 def todoView(request):
    all_todo_items = TodoItem.objects.all()
@@ -14,9 +13,9 @@ def addTodo(request):
    c = request.POST['content']
    new_item = TodoItem(content = c)
    new_item.save()
-   return HttpResponseRedirect('/todo/')
+   return HttpResponseRedirect('/')
 
 def deleteTodo(request,todo_id):
    item_to_delete = TodoItem.objects.get(id=todo_id)
    item_to_delete.delete()
-   return HttpResponseRedirect('/todo/')
+   return HttpResponseRedirect('/')
