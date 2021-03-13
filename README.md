@@ -3,6 +3,8 @@
 #### This is a todo app made using python and django framework. 
 
 ---
+### Hosted on pythonanywhere.com [HERE](https://mydiary.pythonanywhere.com "Go to mydiary.pythonanywhere.com")
+
 
 ### Visit my instagram profile for [ demo video ](https://www.instagram.com/p/CLZybI1p4DY/?utm_source=ig_web_copy_link "todo app video demo")
 
