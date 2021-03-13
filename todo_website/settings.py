@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-from typing import Tuple
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,24 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'cvda6@g%227&56q)oqk*s&620^lj%5q4s!@d8&c4(dp49d7e-b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['mydiary.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
-# STATICFILES_DIRS = [
-#     "/home/aniket/Documents/codeDay/py/django/todo_website/static/"
-# ]
+STATICFILES_DIRS = ['/home/aniket/Documents/codeDay/py/django/todo_website/static']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'todo',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'todo',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR , 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR , 'static')
 
-MEDIA_URL =  '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+# MEDIA_URL =  '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
