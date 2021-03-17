@@ -25,7 +25,7 @@ SECRET_KEY = 'cvda6@g%227&56q)oqk*s&620^lj%5q4s!@d8&c4(dp49d7e-b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mydiary.pythonanywhere.com']
 
 STATICFILES_DIRS = ['/home/aniket/Documents/codeDay/py/django/todo_website/static']
 
