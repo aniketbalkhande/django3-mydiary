@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- ***************************** -->
+<div class="auth_forms">
+      <div id="auth_forms_left">
+         <div id="form_left">
+            <h1>Login</h1>
+            <div id="id_error_wrapper">
+               <span id="id_error">{{error}}</span>
+            </div>
+            <form method="POST">
+               {% csrf_token %} 
+               {{form.as_p}}
+               <div id="form-button">
+                  <input class="btn btn-success" type="submit" id="add_button" value="Login">
+                  <p>
+                     New User ?<a href="{% url 'signupuser'%}"> SignUp here.</a> 
+                  <p>
+               </div> 
+            </form>
+         </div>
+      </div>
+      <div id="auth_forms_right">
+         <div id="img-right"></div>
+      </div>
+   </div>
+
+<!-- ***************************** -->
+{% endblock %}

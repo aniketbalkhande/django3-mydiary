@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- ***************************** -->
+{% if user.is_authenticated %}
+<div class="box">
+   <div class="addtodo">
+         <h1 style="color:rgb(207, 207, 207); text-align: center;">
+            Welcome <span style="color: rgb(188, 238, 188); font-size: 30px; font-weight: bolder;text-transform: capitalize;" >{{user.username}}</span>, </h1><h1 style="color:rgb(207, 207, 207); text-align: center;">This is yout Home Page. 
+         </h1>
+         <span id="home-page-p">
+
+            <p>Are you frustrated by too many work?</p>
+            <p>Are wanted to manage your work and complete them in parts?</p>
+            <p>Then MyDiary is here for you.</p>
+         </span>
+         <div class="additem-home" style="text-align: center;">  
+               <a href="{% url 'createtodo' %}">
+                  <input type="submit" class="btn btn-success" id="add_button" value="Add Your First Todo">
+               </a>
+         </div> 
+      </div>
+   </div>
+{% else %}
+<div id="homepage" >
+   <div id="homepage_wrapper">
+      <div>
+         <h1>Manage your tasks in an easy and efficient way.</h1>
+         <a href="{% url 'loginuser' %}"> <button class="btn btn-lg">Get Started</button></a>
+      </div>
+
+         
+   </div>  
+</div>
+
+{% endif %}
+
+
+<!-- ***************************** -->
+{% endblock %}

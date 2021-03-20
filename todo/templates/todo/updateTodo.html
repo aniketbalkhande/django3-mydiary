@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- **************************** -->
+
+{% if user.is_authenticated %}
+<div class="box">
+   <div class="addtodo">
+      <h1 >Update Todo</h1>
+      <div id="id_error_wrapper"><span id="id_error">{{error}}</span></div>
+
+      <form method="POST">
+         {% csrf_token %}
+         {{form.as_p}}
+         <button type="submit" class="btn btn-success" id="add_button">Save</button>
+      </form>
+      <form action="{% url 'completeTodo' todo.id %}"method="POST">
+         {% csrf_token %}
+         <button type="submit" class="btn btn-success" id="add_button">Complete</button>
+      </form>
+   </div>
+</div>
+{% endif %}
+
+
+<!-- **************************** -->
+{% endblock%}

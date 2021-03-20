@@ -25,9 +25,9 @@ SECRET_KEY = 'cvda6@g%227&56q)oqk*s&620^lj%5q4s!@d8&c4(dp49d7e-b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mydiary.pythonanywhere.com']
+ALLOWED_HOSTS = ['mydiary.pythonanywhere.com', '127.0.0.1']
 
-STATICFILES_DIRS = ['/home/aniket/Documents/codeDay/py/django/todo_website/static']
+# STATICFILES_DIRS = ['/home/aniket/Documents/codeDay/py/django/todo_website/static']
 
 # Application definition
 
@@ -120,7 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR , 'static')
+# STATICFILES_DIRS =  [ 
+#     os.path.join(BASE_DIR , 'static'),
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
-# MEDIA_URL =  '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR , 'media')

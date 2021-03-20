@@ -15,13 +15,37 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import addTodo, todoView, deleteTodo
 from todo import views
 
 urlpatterns = [
+    # admin
     path('admin/', admin.site.urls),
+
+    # without auth
     path('about/',views.about, name='about'),
-    path('', todoView, name="todo"),
-    path('addTodo/', addTodo),
-    path('deleteTodo/<int:todo_id>/', deleteTodo),
+    path('', views.home, name="home"),
+
+    #auth urls
+    path('signup/',views.signupuser,name='signupuser'),
+    path('login/',views.loginuser,name='loginuser'),
+    path('logout/',views.logoutuser,name='logoutuser'),
+
+    # after auth
+    path('todo/', views.todoView, name="todo"),
+    path('note/', views.noteView, name="note"),
+    path('completedTodos/', views.completedTodos,name='completedTodos'),
+    
+
+    #todo
+    path('createtodo/', views.createtodo, name="createtodo"),
+    # path('addTodo/', views.addTodo, name='addTodo'),
+    path('deleteTodo/<int:todo_id>/', views.deleteTodo, name="deleteTodo"),
+    path('updateTodo/<int:todo_id>', views.updateTodo, name="updateTodo"),
+    path('updateTodo/<int:todo_id>/completeTodo/', views.completeTodo, name="completeTodo"),
+    # path('completedTodos/<int:todo_id>/revertBack', views.revertBack, name="revertBack"),
+
+    #note
+    path('createnote/', views.createnote, name="createnote"),
+    path('addNote/', views.addNote,name='addNote'),
+    path('deleteNote/<int:note_id>/', views.deleteNote, name="deleteNote"),
 ]

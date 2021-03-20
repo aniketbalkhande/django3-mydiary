@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- **************************** -->
+{% if user.is_authenticated %}
+<div class="box">
+   <div class="additem"> 
+      <p> 
+        <a href="{% url 'createtodo' %}"><input class="btn btn-success" type="submit" id="add_button" value="Add Todo"></a>
+      </p>
+   </div> 
+   <div class="content">
+      <ol>
+         {% for todo_item in all_items %}
+         <li>
+            <a href="{% url 'updateTodo' todo_item.id %}">
+               <input  type="checkbox" class="selection_checkbox" />
+               {% if todo_item.important %}<span style="background-color:yellow;">{% endif %}
+               <span id="list-text">{{todo_item.title}}</span>
+               <form action="/deleteTodo/{{todo_item.id}}/" method="POST">
+                  {% csrf_token %}  
+                  <input type="submit" value="X">
+               </form>
+            </a>
+            {% if todo_item.important %}</span>{% endif %}
+         </li>
+         {% endfor %}
+      </ol>
+   </div>
+</div>
+
+   {% endif %}
+   
+<!-- **************************** -->
+{% endblock%}
+
+
+
+
+
+
+

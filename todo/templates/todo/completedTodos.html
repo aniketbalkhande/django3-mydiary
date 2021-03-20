@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- **************************** -->
+
+{% if user.is_authenticated %}
+<div class="box">
+   <div class="addtodo">
+      <h1>These Are Your Completed Todos </h1>
+   </div>
+   <div class="content">
+      <ol style="list-style: none;">
+         {% for todo_item in all_items %}
+         <li>
+            <a href="{% url 'updateTodo' todo_item.id %}">
+               <span id="list-text">&check; {{todo_item.title}}</span>
+               <form action="{% url 'deleteTodo' todo_item.id %}" method="POST">
+                  {% csrf_token %}  
+                  <input type="submit" value="Delete">
+               </form>               
+               <p style="font-size: 12px; opacity: 50%; margin-left: 30%;">{{ todo_item.datecompleted|date:'M j Y H:i'}}</p>
+            </a>
+         </li>
+         {% endfor %}
+      </ol>
+   </div>
+</div>
+{% endif %}
+   
+<!-- **************************** -->
+{% endblock%}
+
+
+
+
+
+
+

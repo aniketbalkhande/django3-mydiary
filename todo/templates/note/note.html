@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- **************************** -->
+   {% if user.is_authenticated %}
+   <div class="box">
+      <div class="additem">  
+         <p>
+            <a href="{% url 'createnote' %}">
+               <input type="submit" class="btn btn-success" id="add_button" value="Add a Note">
+            </a>
+         </p>
+      </div> 
+      <div class="content">
+         <div class="row">
+            {% for note_item in all_items %}
+               <div class="col-6"> 
+               <div style="height:100px; margin: 2px; background-color: #fff;">
+                    {{ note_item.title }}
+                </div>
+               </div>
+            {% endfor%}
+            </div>
+      </div>
+   </div>
+   
+   {% endif %}
+   
+<!-- **************************** -->
+{% endblock%}
+
+
+
+
+
+
+
