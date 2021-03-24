@@ -12,11 +12,15 @@
       <form method="POST">
          {% csrf_token %}
          {{form.as_p}}
-         <button type="submit" class="btn btn-success" id="add_button">Save</button>
+         <p>
+             <button type="submit" class="btn btn-success" id="add_button">Save</button>
+         </p>
       </form>
       <form action="{% url 'completeTodo' todo.id %}"method="POST">
          {% csrf_token %}
-         <button type="submit" class="btn btn-success" id="add_button">Complete</button>
+         <p>
+             <button type="submit" class="btn btn-success" id="add_button">Complete</button>
+        </p>
       </form>
    </div>
 </div>
