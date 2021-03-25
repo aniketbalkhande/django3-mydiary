@@ -22,8 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # without auth
-    path('about/',views.about, name='about'),
     path('', views.home, name="home"),
+    path('user/', views.userhome, name="userhome"),
+    path('about/',views.about, name='about'),
 
     #auth urls
     path('signup/',views.signupuser,name='signupuser'),
@@ -34,7 +35,6 @@ urlpatterns = [
     path('todo/', views.todoView, name="todo"),
     path('note/', views.noteView, name="note"),
     path('completedTodos/', views.completedTodos,name='completedTodos'),
-
 
     #todo
     path('createtodo/', views.createtodo, name="createtodo"),

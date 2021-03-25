@@ -19,7 +19,23 @@ def about(request):
    return render(request, 'about.html')
 
 def home(request):
-   return render(request, 'home.html')
+   # if User:
+   #    todos = TodoItem.objects.filter(user = request.user, datecompleted__isnull = True).count()
+   #    completed = TodoItem.objects.filter(user = request.user, datecompleted__isnull = False).count()
+   #    notes = NoteItem.objects.filter(user = request.user).count()
+
+   #    return render(request, 'home.html',{'todos':todos,'completed':completed,'notes':notes})   
+   # else:
+   return render(request, 'home.html')   
+
+
+def userhome(request):
+   todos = TodoItem.objects.filter(user = request.user, datecompleted__isnull = True).count()
+   completed = TodoItem.objects.filter(user = request.user, datecompleted__isnull = False).count()
+   notes = NoteItem.objects.filter(user = request.user).count()
+
+   return render(request, 'userhome.html',{'todos':todos,'completed':completed,'notes':notes})   
+
 
 #````````````END``````````````````
 
@@ -57,7 +73,7 @@ def loginuser(request):
 
       else:
          login(request, user)
-         return redirect('home')
+         return redirect('userhome')
 
 def logoutuser(request):
    if request.method == 'POST':

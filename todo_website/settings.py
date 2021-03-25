@@ -25,7 +25,7 @@ SECRET_KEY = 'cvda6@g%227&56q)oqk*s&620^lj%5q4s!@d8&c4(dp49d7e-b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mydiary.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['mydiary.pythonanywhere.com']
 
 # STATICFILES_DIRS = ['/home/aniket/Documents/codeDay/py/django/todo_website/static']
 
@@ -123,4 +123,12 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'static'),
+# ]
 
+
+try: 
+    from .local_settings import *
+except ImportError:
+    print('Looks like no local files. You must be on production')

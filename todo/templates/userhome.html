@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- ***************************** -->
+{% if user.is_authenticated %}
+<div class="box">
+   <div class="addtodo">
+      <h1 style="color:rgb(207, 207, 207); text-align: center;">
+         Welcome back <span style="color: rgb(188, 238, 188); font-size: 30px; font-weight: bolder;text-transform: capitalize;" >{{user.username}}</span>,
+      </h1>
+      <h1 style="color:rgb(207, 207, 207); text-align: center;">
+         This is your Home Page.
+      </h1>
+
+      Here is your stats :
+      <br><br>
+      <div class="row" id="stats">
+         <div class="col-4" style="border-right: 2px solid rgb(243, 181, 181)">
+            <div id="head">Todos</div>
+            <div id="data">{{todos}}</div>
+         </div>
+         <div class="col-4" style="border-right: 2px solid rgb(243, 181, 181)">
+            <div id="head">Completed</div>
+            <div id="data">{{completed}}</div>
+         </div>
+         <div class="col-4">
+            <div id="head">Notes</div>
+            <div id="data">{{notes}}</div>
+         </div>
+      </div>
+      <!-- if User has completed all the todos -->
+      {% if todos == 0 and completed > 0 or todos == 0 and notes > 0 %} 
+      <div class="additem-home" style="text-align: center;">
+         <h1>Your Todo list is empty. Looks like you have completed all of them.</h1> 
+         <a href="{% url 'createtodo' %}">
+            <input type="submit" class="btn btn-success" id="add_button" value="Add one more todo">
+         </a>
+      </div>
+
+      <!-- if User hasn't completed all the todos -->
+      {% elif todos == 0  %} <br><br>
+      <div class="additem-home" style="text-align: center;">
+         <a href="{% url 'createtodo' %}">
+            <input type="submit" class="btn btn-success" id="add_button" value="Add Your First Todo">
+         </a>
+      </div><br><br>
+      <span id="home-page-p">
+         <p>Are you frustrated by too many work?</p>
+         <p>And wanted to manage your work and complete them in parts?</p>
+         <p>Then MyDiary is here for you.</p>
+      </span>
+
+      {% else %}
+      <div class="additem-home" style="text-align: center;">
+         <a href="{% url 'todo' %}">
+            <input type="submit" class="btn btn-success" id="add_button" value="You are Doing Grate. Make some more todo's">
+         </a>
+      </div>
+      {% endif %}
+   </div>
+</div>
+
+{% endif %}
+
+<!-- ***************************** -->
+{% endblock %}
